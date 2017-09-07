@@ -28,7 +28,7 @@ let g:dwm_version = "0.1.2"
 
 " Check for Vim version 700 or greater {{{1
 if v:version < 700
-  echo "Sorry, dwm.vim ".g:dwm_version."\nONLY runs with Vim 7.0 and greater."
+  echo "Sorry, dwm.vim ".g:dwm_version." ONLY runs with Vim 7.0 and greater."
   finish
 endif
 
@@ -194,25 +194,24 @@ if !exists('g:dwm_map_keys')
 endif
 
 if g:dwm_map_keys
-  nnoremap <C-J> <C-W>w
-  nnoremap <C-K> <C-W>W
+  nnoremap <Leader>j <C-W>w
+  nnoremap <Leader>k <C-W>W
 
   if !hasmapto('<Plug>DWMRotateCounterclockwise')
-      nmap <C-,> <Plug>DWMRotateCounterclockwise
+      nmap <Leader>, <Plug>DWMRotateCounterclockwise
   endif
   if !hasmapto('<Plug>DWMRotateClockwise')
-      nmap <C-.> <Plug>DWMRotateClockwise
+      nmap <Leader>. <Plug>DWMRotateClockwise
   endif
 
   if !hasmapto('<Plug>DWMNew')
-      nmap <C-N> <Plug>DWMNew
+      nmap <Leader>n <Plug>DWMNew
   endif
   if !hasmapto('<Plug>DWMClose')
-      nmap <C-C> <Plug>DWMClose
+      nmap <Leader>c <Plug>DWMClose
   endif
   if !hasmapto('<Plug>DWMFocus')
-      nmap <C-@> <Plug>DWMFocus
-      nmap <C-Space> <Plug>DWMFocus
+      nmap <Leader><Space> <Plug>DWMFocus
   endif
 
   if !hasmapto('<Plug>DWMGrowMaster')
@@ -227,5 +226,6 @@ if has('autocmd')
   augroup dwm
     au!
     au BufWinEnter * if &l:buflisted || &l:filetype == 'help' | call DWM_AutoEnter() | endif
+    au FileReadPost * if &l:buflisted || &l:filetype == 'help' | call DWM_AutoEnter() | endif
   augroup end
 endif
